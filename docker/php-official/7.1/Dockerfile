@@ -182,13 +182,14 @@ RUN set -x \
     && printf "\n" | pecl install vips \
     && echo extension=vips.so > /usr/local/etc/php/conf.d/vips.ini \
     && pecl install redis \
-    && pecl install mongodb \
+    # there is not installable mongodb version for php 7.1
+    #&& pecl install mongodb \
     && pecl install imagick \
     && pecl install amqp \
     && echo extension=apcu.so > /usr/local/etc/php/conf.d/apcu.ini \
     && echo extension=redis.so > /usr/local/etc/php/conf.d/redis.ini \
     && echo extension=imagick.so > /usr/local/etc/php/conf.d/imagick.ini \
-    && echo extension=mongodb.so > /usr/local/etc/php/conf.d/mongodb.ini \
+    #&& echo extension=mongodb.so > /usr/local/etc/php/conf.d/mongodb.ini \
     && echo extension=amqp.so > /usr/local/etc/php/conf.d/amqp.ini \
     # Uninstall dev and header packages
     && apt-get purge -y -f --force-yes \
